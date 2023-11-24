@@ -1,12 +1,12 @@
 CC := clang
 RM := rm
 
-main: main.m
-	$(CC) main.m -framework CoreMIDI -framework CoreServices -framework Foundation -o main
+mt32-volume: main.m
+	$(CC) main.m -framework CoreMIDI -framework CoreServices -framework Foundation -o $@
 
 .PHONY: all clean
 
-all: main
+all: mt32-volume
 
 clean:
-	$(RM) -f main
+	$(RM) -f mt32-volume

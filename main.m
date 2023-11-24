@@ -16,7 +16,11 @@ int getDevice() {
     return -1;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+    if (argc - 2) {
+        printf("Please specify a volume!\n");
+    }
+
     MIDIClientRef client;
     MIDIPortRef out;
     OSStatus err = noErr;
@@ -31,6 +35,8 @@ int main() {
         exit(1);
     }
 
+    int volume = atoi(argv[1]);
+
     // See: http://www.youngmonkey.ca/nose/audio_tech/synth/Roland-MT32.html
     char msg[11];
     msg[0] = 0xF0;  // start sysex
@@ -41,8 +47,8 @@ int main() {
     msg[5] = 0x10;  // address MSB
     msg[6] = 0x00;  // address
     msg[7] = 0x16;  // address LSB
-    msg[8] = 0x46;  // data - currently hardcoded to 70% (0x46)
-    msg[9] = 0x14;  // checksum
+    msg[8] = volume;  // data
+    msg[9] = 0x0;  // checksum
     msg[10] = 0xF7; // EOX
 
     uint checksum = 0x80;

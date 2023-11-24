@@ -45,6 +45,12 @@ int main() {
     msg[9] = 0x14;  // checksum
     msg[10] = 0xF7; // EOX
 
+    uint checksum = 0x80;
+    for (int index = 5; index < 9; index++) {
+        checksum -= msg[index];
+    }
+    msg[9] = checksum % 0x80;
+
     char buf[384];
     MIDIPacketList *packetList = (MIDIPacketList *)buf;
     MIDIPacket *packet = packetList->packet;

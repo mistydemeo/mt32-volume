@@ -1,0 +1,21 @@
+[package]
+name = "mt32-volume"
+description = "macOS commandline utility to set the volume of a Roland MT-32"
+version = "1.0.1"
+license = "GPL-3.0-only"
+repository = "https://github.com/mistydemeo/mt32-volume"
+binaries = ["mt32-volume"]
+build-command = ["make"]
+
+# Config for 'cargo dist'
+[dist]
+# The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.5.0"
+# CI backends to support
+ci = ["github"]
+# The installers to generate for each app
+installers = ["shell"]
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin"]
+# Publish jobs to run in CI
+pr-run-mode = "plan"

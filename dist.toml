@@ -5,7 +5,7 @@ version = "1.0.1"
 license = "GPL-3.0-only"
 repository = "https://github.com/mistydemeo/mt32-volume"
 binaries = ["mt32-volume"]
-build-command = ["make"]
+build-command = ["make", "clean", "all"]
 
 # Config for 'cargo dist'
 [dist]

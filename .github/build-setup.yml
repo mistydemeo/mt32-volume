@@ -1,0 +1,2 @@
+- name: Delete cargo
+  run: "rm -v $(which cargo)"
